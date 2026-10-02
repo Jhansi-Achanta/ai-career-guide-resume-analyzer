@@ -46,20 +46,26 @@ def _load_unlocked(path: Path, default: Any) -> Any:
 
 
 def _save_unlocked(path: Path, data: Any) -> None:
-    """Write JSON atomically (temp file + rename). Never raises on bad data."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temp_path = path.with_name(path.name + ".tmp")
-    with temp_path.open("w", encoding="utf-8") as handle:
-        json.dump(data, handle, indent=2, ensure_ascii=False)
-    os.replace(temp_path, path)
+    """Write JSON atomically, ignoring filesystem errors when storage is unavailable."""
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temp_path = path.with_name(path.name + ".tmp")
+        with temp_path.open("w", encoding="utf-8") as handle:
+            json.dump(data, handle, indent=2, ensure_ascii=False)
+        os.replace(temp_path, path)
+    except OSError:
+        return
 
 
 def ensure_store(path: Any, default: Any) -> None:
     """Create ``path`` containing ``default`` when it does not exist yet."""
     path = Path(path)
     with _lock_for(path):
-        if not path.exists():
-            _save_unlocked(path, copy.deepcopy(default))
+        try:
+            if not path.exists():
+                _save_unlocked(path, copy.deepcopy(default))
+        except OSError:
+            return
 
 
 def read_json(path: Any, default: Any) -> Any:

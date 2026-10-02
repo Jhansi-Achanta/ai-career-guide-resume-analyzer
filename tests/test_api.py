@@ -179,6 +179,29 @@ class ApiTestCase(unittest.TestCase):
         self._tempdir.cleanup()
 
 
+class JsonStorageFallbackTests(unittest.TestCase):
+    def test_unwritable_storage_keeps_initialization_and_history_reads_safe(self):
+        from storage import records
+
+        with tempfile.TemporaryDirectory() as tempdir:
+            original_paths = (config.ANALYSES_FILE, config.CAREER_PLANS_FILE)
+            config.ANALYSES_FILE = Path(tempdir) / "analyses.json"
+            config.CAREER_PLANS_FILE = Path(tempdir) / "career_plans.json"
+            try:
+                with mock.patch(
+                    "storage.json_store.Path.mkdir",
+                    side_effect=PermissionError("read-only filesystem"),
+                ):
+                    records.init_stores()
+                    records.save_analysis({"id": "analysis-1"})
+                    records.save_career_plan({"id": "plan-1"})
+
+                self.assertEqual(records.list_analyses(), [])
+                self.assertEqual(records.list_career_plans(), [])
+            finally:
+                config.ANALYSES_FILE, config.CAREER_PLANS_FILE = original_paths
+
+
 class GeminiClientTests(unittest.TestCase):
     def test_rate_limits_are_not_retried_for_any_sdk_error_path(self):
         generic_error = Exception("rate limited")
