@@ -1,0 +1,20 @@
+# ---------------------------------------------------------------------------
+# AI Career Guide & Resume Analyzer - Python dependencies
+# Install with:  python -m pip install -r requirements.txt
+# ---------------------------------------------------------------------------
+
+# Web framework (serves the JSON API + the static frontend)
+Flask==3.1.3
+
+# Reads secrets such as GEMINI_API_KEY from the ".env" file
+python-dotenv==1.2.3
+
+# Google Gemini API - the current unified SDK (NOT google-generativeai)
+google-genai==2.27.0
+
+# Required by google-genai 2.27.0
+pydantic==2.12.5
+
+# Resume text extraction
+PyPDF2==3.0.1
+python-docx==1.1.2

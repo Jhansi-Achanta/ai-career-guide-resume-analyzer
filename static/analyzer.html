@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Analyzer - AI Career Guide &amp; Resume Analyzer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23b87936'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Segoe UI'%3ECG%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-page="analyzer">
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">CG</span>
+        <span class="brand-text">
+          <strong>AI Career Guide</strong>
+          <small>Resume Analyzer</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/career" data-nav="career">Career Guide</a>
+        <a href="/analyzer" data-nav="analyzer">Resume Analyzer</a>
+        <a href="/history" data-nav="history">History</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page analyzer-page">
+    <div class="wrap">
+
+      <div id="health-banner" class="banner hidden"></div>
+
+      <section class="analyzer-intro">
+        <span class="analyzer-kicker"><span aria-hidden="true"></span> Resume intelligence</span>
+        <h1>Resume <span>Analyzer</span></h1>
+        <p>See how your experience aligns with the role you want, with a clear ATS score and practical next steps.</p>
+      </section>
+
+      <!-- ===================== the form ===================== -->
+      <section class="analyzer-form-card">
+        <div class="analyzer-form-head">
+          <h2>Build your role-specific report</h2>
+          <p>Choose a resume and target role to get started.</p>
+        </div>
+        <form id="analyzer-form" novalidate>
+          <div class="form-grid analyzer-form-grid">
+
+            <div class="field span-2 analyzer-field">
+              <label for="resume">Resume file</label>
+              <label class="dropzone" id="dropzone" for="resume">
+                <span class="dz-icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path d="M18.5 4.5H9A2.5 2.5 0 0 0 6.5 7v18A2.5 2.5 0 0 0 9 27.5h14a2.5 2.5 0 0 0 2.5-2.5V11.5L18.5 4.5Z" />
+                    <path d="M18 5v7h7M16 22v-7m0 0-3 3m3-3 3 3" />
+                  </svg>
+                </span>
+                <strong>Drop your resume here, or <span>browse files</span></strong>
+                <small id="upload-limit">PDF or DOCX only</small>
+                <span class="file-name" id="file-name" aria-live="polite"></span>
+                <input type="file" id="resume" name="resume" accept=".pdf,.docx" />
+              </label>
+              <span class="hint analyzer-hint">
+                <span aria-hidden="true">i</span> Text-based PDFs and DOCX files are supported.
+              </span>
+            </div>
+
+            <div class="field span-2 analyzer-field">
+              <label for="target_role">Target job role</label>
+              <input type="text" id="target_role" name="target_role" list="role-options"
+                     placeholder="e.g. Backend Developer" autocomplete="off" />
+              <datalist id="role-options"></datalist>
+              <span class="hint">Choose a suggested role or enter your own.</span>
+            </div>
+
+            <div class="field span-2 analyzer-field analyzer-controls">
+              <div class="btn-row analyzer-actions">
+                <button class="btn btn-primary" type="submit" id="analyzer-submit">
+                  <span class="analyzer-submit-icon" aria-hidden="true">↗</span>
+                  Analyze Resume
+                </button>
+                <button class="btn btn-ghost analyzer-clear" type="reset">Clear</button>
+                <small class="analyzer-time-note">Usually takes less than a minute</small>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </section>
+
+      <!-- ===================== loading + results ===================== -->
+      <div id="analyzer-error" class="analyzer-status" aria-live="polite"></div>
+
+      <div id="analyzer-loading" class="loader analyzer-loading hidden" aria-live="polite">
+        <span class="spinner"></span>
+        <span>Preparing your role-specific analysis...</span>
+      </div>
+
+      <section id="analyzer-result" class="hidden"></section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <strong>© 2026 AI Career Guide &amp; Resume Analyzer</strong>
+        <div class="footer-tagline">Smart Career Guidance • Resume Analysis • Personalized Career Planning</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/render.js"></script>
+  <script src="/static/js/analyzer.js"></script>
+</body>
+</html>

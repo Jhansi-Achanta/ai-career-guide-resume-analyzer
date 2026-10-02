@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Career Guide - AI Career Guide &amp; Resume Analyzer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23b87936'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Segoe UI'%3ECG%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-page="career">
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">CG</span>
+        <span class="brand-text">
+          <strong>AI Career Guide</strong>
+          <small>Resume Analyzer</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/career" data-nav="career">Career Guide</a>
+        <a href="/analyzer" data-nav="analyzer">Resume Analyzer</a>
+        <a href="/history" data-nav="history">History</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+
+      <div id="health-banner" class="banner hidden"></div>
+
+      <div class="card">
+        <h1>AI Career Guide</h1>
+        <p style="margin-bottom:0">
+          Answer seven quick questions and Gemini will design a personalised career
+          plan, a 30-day learning schedule, resources and projects that match your
+          target role and the time you actually have.
+        </p>
+      </div>
+
+      <!-- ===================== the form ===================== -->
+      <div class="card accent-sky" style="margin-top:1.5rem">
+        <form id="career-form" novalidate>
+          <div class="form-grid">
+
+            <div class="field span-2">
+              <label for="education">Education</label>
+              <input type="text" id="education" name="education"
+                     placeholder="e.g. B.Tech CSE, 3rd year, Anna University" />
+              <span class="hint">Your current degree, year and college or university.</span>
+            </div>
+
+            <div class="field span-2">
+              <label for="skills">Current skills</label>
+              <textarea id="skills" name="skills"
+                        placeholder="e.g. Python basics, HTML, CSS, MySQL, communication in English and Tamil"></textarea>
+              <span class="hint">Separate skills with commas. Include soft skills too.</span>
+            </div>
+
+            <div class="field span-2">
+              <label for="interests">Interests <span class="optional">(optional)</span></label>
+              <input type="text" id="interests" name="interests"
+                     placeholder="e.g. web development, machine learning, designing, data" />
+            </div>
+
+            <div class="field">
+              <label for="target_role">Target role</label>
+              <input type="text" id="target_role" name="target_role" list="role-options"
+                     placeholder="e.g. Backend Developer" autocomplete="off" />
+              <datalist id="role-options"></datalist>
+              <span class="hint">Pick a suggestion or type your own.</span>
+            </div>
+
+            <div class="field">
+              <label for="experience_level">Current experience level</label>
+              <select id="experience_level" name="experience_level">
+                <option value="">Please choose...</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="time_per_day">Time available per day</label>
+              <select id="time_per_day" name="time_per_day">
+                <option value="">Please choose...</option>
+                <option value="30 minutes">30 minutes</option>
+                <option value="1 hour">1 hour</option>
+                <option value="1-2 hours">1-2 hours</option>
+                <option value="2-3 hours">2-3 hours</option>
+                <option value="3-4 hours">3-4 hours</option>
+                <option value="4+ hours">4+ hours</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="extra_notes">Anything else? <span class="optional">(optional)</span></label>
+              <input type="text" id="extra_notes" name="extra_notes"
+                     placeholder="e.g. I only have my phone, no laptop" />
+            </div>
+
+            <div class="field span-2">
+              <div id="career-error"></div>
+              <div class="btn-row" style="margin-top:.4rem">
+                <button class="btn btn-primary" type="submit" id="career-submit">
+                  Generate my career plan
+                </button>
+                <button class="btn btn-ghost" type="reset">Clear form</button>
+                <small style="color:#94a3b8">This can take 20-40 seconds.</small>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- ===================== loading + results ===================== -->
+      <div id="career-loading" class="loader hidden">
+        <span class="spinner"></span>
+        <span>Gemini is building your plan. Please keep this page open...</span>
+      </div>
+
+      <section id="career-result" class="hidden"></section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <strong>© 2026 AI Career Guide &amp; Resume Analyzer</strong>
+        <div class="footer-tagline">Smart Career Guidance • Resume Analysis • Personalized Career Planning</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/render.js"></script>
+  <script src="/static/js/career.js"></script>
+</body>
+</html>

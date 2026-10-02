@@ -1,0 +1,28 @@
+# --- Secrets ---------------------------------------------------------------
+# The Gemini API key lives only in .env - it must never be committed.
+.env
+
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# --- Saved user data (the JSON "database") ---------------------------------
+# Keep the folder, ignore the generated records.
+data/*.json
+!data/.gitkeep
+
+# --- Editor / OS -----------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Logs ------------------------------------------------------------------
+*.log

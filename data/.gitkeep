@@ -1,0 +1,2 @@
+# Keeps the "data" folder in version control while the generated
+# JSON records themselves stay ignored (see .gitignore).

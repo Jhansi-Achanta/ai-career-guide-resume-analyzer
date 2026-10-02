@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History - AI Career Guide &amp; Resume Analyzer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23b87936'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Segoe UI'%3ECG%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-page="history">
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">CG</span>
+        <span class="brand-text">
+          <strong>AI Career Guide</strong>
+          <small>Resume Analyzer</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/career" data-nav="career">Career Guide</a>
+        <a href="/analyzer" data-nav="analyzer">Resume Analyzer</a>
+        <a href="/history" data-nav="history">History</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+
+      <div class="card">
+        <h1>Your history</h1>
+        <p style="margin-bottom:0">
+          Everything you generate is stored as JSON files inside the project's
+          <code>data</code> folder, so you can reopen any report later.
+        </p>
+      </div>
+
+      <div style="margin-top:1.5rem">
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" type="button" data-tab="analyses" id="tab-analyses">
+            Resume reports
+          </button>
+          <button class="tab" type="button" data-tab="plans" id="tab-plans">
+            Career plans
+          </button>
+        </div>
+
+        <div id="history-error"></div>
+
+        <div class="loader hidden" id="history-loading">
+          <span class="spinner"></span>
+          <span>Loading...</span>
+        </div>
+
+        <div id="history-list"></div>
+
+        <section id="history-detail" class="hidden" style="margin-top:1.75rem"></section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <strong>© 2026 AI Career Guide &amp; Resume Analyzer</strong>
+        <div class="footer-tagline">Smart Career Guidance • Resume Analysis • Personalized Career Planning</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/render.js"></script>
+  <script src="/static/js/history.js"></script>
+</body>
+</html>
